@@ -1,32 +1,26 @@
-// Base abstract class for all financial assets
-public abstract class FinancialAsset {
-    protected String name;
-    protected double value;
-    protected String purchaseDate;
-    protected String type;
+import java.util.Date;
 
-    /**
-     * Constructor for the base financial asset
-     * @param name The name of the asset
-     * @param value The current value of the asset
-     * @param purchaseDate When the asset was acquired
-     * @param type The type of financial asset
-     */
-    public FinancialAsset(String name, double value, String purchaseDate, String type) {
+// Financial Asset Classes
+abstract class FinancialAsset {
+    private String name;
+    private double value;
+    private Date purchaseDate;
+    private String type;
+
+    public FinancialAsset(String name, double value, Date purchaseDate) {
         this.name = name;
         this.value = value;
         this.purchaseDate = purchaseDate;
-        this.type = type;
     }
 
-    // Abstract methods that all financial assets must implement
     public abstract double calculateInterest();
-    public abstract void displayDetails();
-    public abstract double calculateFutureValue(int years, double rateOfReturn);
 
-    // Common getters and setters
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getValue() {
@@ -37,11 +31,19 @@ public abstract class FinancialAsset {
         this.value = value;
     }
 
-    public String getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
+    }
+
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     public String getType() {
         return type;
+    }
+
+    protected void setType(String type) {
+        this.type = type;
     }
 }
